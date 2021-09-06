@@ -1,19 +1,36 @@
 //https://brasilapi.com.br/api/feriados/v1/${year}`
 
-async function getHoliday(year:number): Promise<object[]>{
+const mainText = document.querySelector('h2')!;
+const sideText = document.querySelector('h3')!;
+
+async function getHoliday(year:number): Promise<any>{
         try {
-            const response = await fetch(`https://brasilapi.com.br/api/feriados/v1/${year}`);
+            const response:Response = await fetch(`https://brasilapi.com.br/api/feriados/v1/${year}`);
             const holidays:object[] = await response.json();
 
-            console.log(holidays);
-            
             return holidays;
         } catch (error) {
             console.log(error);
-            
         }
     }
 
-getHoliday(2021);
+    
+async function renderHolidays(): Promise<void>{
+    try{
+        const date = new Date()
+        const year = date.getFullYear();
+        let holidays:[] = [];
+        holidays = await getHoliday(year)
+        
+        //Creating the node and adding it to the mainText element.
+        const text = document.createTextNode(`2021 tem ${holidays.length} feriados!`)
+        mainText.appendChild(text)
 
+        holidays.forEach(holiday => console.log(holiday))
+    }catch(error){
+        console.log(error);
+        
+    }
+}
 
+renderHolidays()
