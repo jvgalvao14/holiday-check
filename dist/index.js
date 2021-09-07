@@ -28,13 +28,20 @@ function renderHolidays() {
             const year = date.getFullYear();
             let holidays;
             holidays = yield getHoliday(year);
-            const testDate = new Date(holidays[2].date);
-            console.log(testDate.getMonth());
             //Creating the node and adding it to the mainText element.
             const text = document.createTextNode(`2021 tem ${holidays.length} feriados!`);
             mainText.appendChild(text);
-            for (const hd in holidays) {
-                const holiday = new holidayClass(holidays[hd].date, holidays[hd].name, holidays[hd].type);
+            for (const hd of holidays) {
+                const formatedDate = new Date(hd.date);
+                console.log(formatedDate.getDate());
+                let date = {
+                    day: formatedDate.getDate(),
+                    month: formatedDate.getMonth(),
+                    year: formatedDate.getFullYear()
+                };
+                let name = hd.name;
+                let type = hd.type;
+                const holiday = new holidayClass(date, name, type);
                 holiday.render(holiday.date, holiday.name, holiday.type);
             }
         }
