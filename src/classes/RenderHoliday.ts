@@ -6,19 +6,19 @@ export class holidayClass{
     ){}
 
     render(d: string, n:string, t: string){
-        const bro = document.getElementById('bro')
+        const cont = document.getElementById('cont')
 
         const li = document.createElement('li');
         const h4 = document.createElement('h4');
-        h4.innerText = n;
+        h4.innerText = d;
 
         li.append(h4)
         
         const p = document.createElement('p');
-        p.innerText = d;
+        p.innerText = n;
         li.append(p);
-
-        bro.append(li)
+        li.classList.add('list-group-item')
+        cont.append(li)
         
     }
 

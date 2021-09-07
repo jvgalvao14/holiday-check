@@ -28,6 +28,8 @@ function renderHolidays() {
             const year = date.getFullYear();
             let holidays;
             holidays = yield getHoliday(year);
+            const testDate = new Date(holidays[2].date);
+            console.log(testDate.getMonth());
             //Creating the node and adding it to the mainText element.
             const text = document.createTextNode(`2021 tem ${holidays.length} feriados!`);
             mainText.appendChild(text);

@@ -24,9 +24,13 @@ async function renderHolidays(): Promise<void>{
     try{
         const date = new Date()
         const year = date.getFullYear();
-        let holidays
+        let holidays;
         holidays = await getHoliday(year)
         
+        const testDate = new Date(holidays[2].date)
+
+        console.log(testDate.getMonth());
+
         //Creating the node and adding it to the mainText element.
         const text = document.createTextNode(`2021 tem ${holidays.length} feriados!`)
         mainText.appendChild(text)
@@ -37,8 +41,6 @@ async function renderHolidays(): Promise<void>{
         }
     }catch(error){
         console.log(error);
-        
     }
 }
-
 renderHolidays()
