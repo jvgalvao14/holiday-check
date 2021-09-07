@@ -1,25 +1,16 @@
 export class holidayClass{
     constructor(
-        readonly date:{
-            day:number,
-            month:number,
-            year:number
-        },
+        readonly date:string,
         readonly name:string,
         readonly type:string,
     ){}
 
-    render(d: {
-            day:number,
-            month:number,
-            year:number
-        }, n:string, t: string){
-
-        const date = `${d.day}/${d.month}/${d.year}`
+    render(d: string, n:string, t: string){
         const cont = document.getElementById('cont')
+
         const li = document.createElement('li');
         const h4 = document.createElement('h4');
-        h4.innerText = date;
+        h4.innerText = d;
 
         li.append(h4)
         

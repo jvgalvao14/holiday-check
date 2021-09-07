@@ -5,11 +5,10 @@ export class holidayClass {
         this.type = type;
     }
     render(d, n, t) {
-        const date = `${d.day}/${d.month}/${d.year}`;
         const cont = document.getElementById('cont');
         const li = document.createElement('li');
         const h4 = document.createElement('h4');
-        h4.innerText = date;
+        h4.innerText = d;
         li.append(h4);
         const p = document.createElement('p');
         p.innerText = n;
