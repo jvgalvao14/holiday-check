@@ -1,12 +1,17 @@
-//https://brasilapi.com.br/api/feriados/v1/${year}`
+import {holidayClass} from "./classes/RenderHoliday.js"
 
 const mainText = document.querySelector('h2')!;
-const sideText = document.querySelector('h3')!;
 
-async function getHoliday(year:number): Promise<any>{
+interface iHoliday{
+    date:string,
+    name:string,
+    type:string,
+}
+
+async function getHoliday(year:number): Promise<object>{
         try {
             const response:Response = await fetch(`https://brasilapi.com.br/api/feriados/v1/${year}`);
-            const holidays:object[] = await response.json();
+            const holidays:iHoliday[] = await response.json();
 
             return holidays;
         } catch (error) {
@@ -19,14 +24,17 @@ async function renderHolidays(): Promise<void>{
     try{
         const date = new Date()
         const year = date.getFullYear();
-        let holidays:[] = [];
+        let holidays
         holidays = await getHoliday(year)
         
         //Creating the node and adding it to the mainText element.
         const text = document.createTextNode(`2021 tem ${holidays.length} feriados!`)
         mainText.appendChild(text)
 
-        holidays.forEach(holiday => console.log(holiday))
+        for(const hd in holidays){
+            const holiday = new holidayClass(holidays[hd].date,holidays[hd].name,holidays[hd].type);
+            holiday.render(holiday.date,holiday.name,holiday.type)
+        }
     }catch(error){
         console.log(error);
         
