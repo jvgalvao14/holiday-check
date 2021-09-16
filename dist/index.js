@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { holidayClass } from "./classes/RenderHoliday.js";
-const mainText = document.querySelector('h2');
+const mainText = document.querySelector("h2");
 function getHoliday(year) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
