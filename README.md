@@ -1,6 +1,6 @@
 <h1 align='center'>Holiday Check</h1>
 
-<p align='center'>Web app made with Vanilla TypeScript and HTML and Brasil API Holiday API (https://brasilapi.com.br/docs#tag/Feriados-Nacionais)</p>
+<p align='center'>Web app made with Vanilla TypeScript and HTML and Brasil API's National Holiday API (https://brasilapi.com.br/docs#tag/Feriados-Nacionais)</p>
 
 # How to use
 
